@@ -153,3 +153,20 @@
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  .font-script { font-family: var(--font-script); }
+  .font-serif-display { font-family: var(--font-serif); }
+  .underline-scribble {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'><path d='M2 6 Q 50 0 100 6 T 198 6' stroke='%23E85A3C' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 0.5em;
+    padding-bottom: 0.15em;
+  }
+  .paper-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 10px 30px -15px rgba(40,30,20,0.18);
+  }
+}
