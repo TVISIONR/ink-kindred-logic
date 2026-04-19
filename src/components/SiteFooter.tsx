@@ -48,9 +48,9 @@ export function SiteFooter() {
               Connect
             </h4>
             <ul className="mt-4 space-y-2 text-sm text-background/70">
-              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Panjim, Goa</li>
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 90000 00000</li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@ritershub.in</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /><span>Panjim, Goa</span></li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4" /><span>+91 90000 00000</span></li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /><span>hello@ritershub.in</span></li>
             </ul>
           </div>
           <div>
