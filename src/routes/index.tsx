@@ -65,9 +65,12 @@ function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-12 pb-20 md:grid-cols-2 md:items-center md:pt-20">
-          <div>
+          <motion.div initial="hidden" animate="show" variants={fadeUp}>
             <span className="font-script text-2xl text-primary">time to write!</span>
-            <h1 className="mt-2 font-serif-display text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
+            <div className="mt-3 text-primary">
+              <HandwrittenLogo />
+            </div>
+            <h1 className="mt-4 font-serif-display text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
               Your words.
               <br />
               In <span className="underline-scribble">pen &amp; ink.</span>
@@ -79,7 +82,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
-                className="rounded-md bg-primary px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-primary-foreground shadow-md transition hover:brightness-110"
+                className="rounded-md bg-primary px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-primary-foreground shadow-md transition hover:-translate-y-0.5 hover:brightness-110"
               >
                 Start Writing
               </Link>
@@ -90,9 +93,14 @@ function HomePage() {
                 View pricing →
               </Link>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            className="relative"
+          >
             <img
               src={heroImg}
               alt="Robotic arm writing on a card with pen and ink"
@@ -100,29 +108,24 @@ function HomePage() {
               height={1024}
               className="w-full rounded-2xl"
             />
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST */}
-      <section className="border-y border-border bg-secondary/40 py-8">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-3 px-5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          <span>Hotels</span><span>·</span>
-          <span>Resorts</span><span>·</span>
-          <span>Cafes</span><span>·</span>
-          <span>Boutique brands</span><span>·</span>
-          <span>Real estate</span>
+          </motion.div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
       <section className="mx-auto max-w-7xl px-5 py-20">
-        <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={fadeUp}
+          className="mx-auto max-w-2xl text-center"
+        >
           <span className="font-script text-2xl text-primary">how it works</span>
           <h2 className="mt-1 font-serif-display text-4xl text-foreground sm:text-5xl">
             From your message to <span className="underline-scribble">their mailbox.</span>
           </h2>
-        </div>
+        </motion.div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {[
             {
@@ -140,14 +143,22 @@ function HomePage() {
               t: "3. Delivered to your guests",
               d: "Cards ship to your property or directly to customers. Bulk batches of 30–500.",
             },
-          ].map((s) => (
-            <div key={s.t} className="paper-card rounded-2xl p-7">
+          ].map((s, i) => (
+            <motion.div
+              key={s.t}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              whileHover={{ y: -6 }}
+              className="paper-card rounded-2xl p-7"
+            >
               <div className="grid h-12 w-12 place-items-center rounded-full bg-primary/10 text-primary">
                 <s.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 font-serif-display text-xl">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
